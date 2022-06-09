@@ -1,0 +1,161 @@
+* {
+	margin: auto;
+}
+
+ul {
+	list-style: none;
+}
+
+.header__logo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 20px;
+}
+
+.header__logo h2 {
+	color: #d04f4f;
+}
+
+main {
+	margin: auto 100px;
+}
+
+/**Searchbar**/
+
+.searchbar,
+.searchbar input,
+.searchbar input:focus,
+.searchbar input:hover {
+	background-color: #E7E7E7;
+	border: none;
+}
+
+.searchbar {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	border-radius: 5px
+}
+
+/**Filter**/
+
+input::placeholder {
+	color: #FAFAFA;
+	opacity: 0.6;
+}
+
+.hidden {
+	display: none;
+}
+
+.btn-custom {
+	color: #FAFAFA;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: none;
+	border-radius: 5px;
+}
+
+.ingredients-controls,
+.btn-ingredients {
+	background-color: #3282F7;
+	border-radius: 5px;
+}
+
+#input-ingredients,
+#ingredients{
+	background-color: #3282F7;
+	color: #FAFAFA;
+	border: none;
+	border-radius: 5px;
+}
+
+/* #ingredients-button, 
+.filter__list--ingredients,
+.input-ingredients {
+	background-color: #3282F7;
+	color: #FAFAFA;
+	border: none;
+	border-radius: 5px;
+	width: fit-content;
+} */
+
+.appliances-controls,
+.btn-appliances {
+	background-color: #68D9A4;
+	border-radius: 5px;
+}
+
+#input-appliances,
+#appliances{
+	background-color: #68D9A4;
+	color: #FAFAFA;
+	border: none;
+	border-radius: 5px;
+}
+
+/* #appliances-button,
+.filter__list--appliances,
+.input-appliances {
+	background-color: #68D9A4;
+	color: #FAFAFA;
+	border: none;
+	border-radius: 5px;
+} */
+
+.ustensils-controls,
+.btn-ustensils {
+	background-color: #ED6454;
+	border-radius: 5px;
+}
+
+#input-ustensils,
+#ustensils{
+	background-color: #ED6454;
+	color: #FAFAFA;
+	border: none;
+	border-radius: 5px;
+}
+
+/* #ustensils-button,
+.filter__list--ustensils,
+.input-ustensils {
+	background-color: #ED6454;
+	color: #FAFAFA;
+	border: none;
+	border-radius: 5px;
+} */
+
+.filter__options {
+	list-style-type: none;
+}
+
+
+/**Recipes**/
+
+
+.card-body {
+	font-size: 13px;
+	background-color: #E7E7E7;
+	height: 195px;
+	overflow: hidden;
+}
+
+.card-text {
+	height: 140px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 12px;
+}
+
+.recipe_description {
+	display: block;
+	height: 130px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	/* display: -webkit-box;
+	-webkit-line-clamp: 5;
+	-webkit-box-orient: vertical */
+}
