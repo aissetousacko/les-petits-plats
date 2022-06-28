@@ -307,7 +307,7 @@ export const recipes = [
 	},
 	{
 		id: 9,
-		name: "Salade Méditerannéene fraîche au chèvre",
+		name: "Salade Méditerrannéenne fraîche au chèvre",
 		servings: 4,
 		ingredients: [
 			{
@@ -323,7 +323,7 @@ export const recipes = [
 				unit: "grammes",
 			},
 			{
-				ingredient: "Vinaigre Balsamic",
+				ingredient: "Vinaigre Balsamique",
 			},
 			{
 				ingredient: "Huile d'olive",
@@ -390,7 +390,7 @@ export const recipes = [
 				unit: "grammes",
 			},
 			{
-				ingredient: "Jambon de parme",
+				ingredient: "Jambon de Parme",
 				quantity: 4,
 				unit: "tranches",
 			},
@@ -487,7 +487,7 @@ export const recipes = [
 		servings: 2,
 		ingredients: [
 			{
-				ingredient: "Saucisse bretonne ou de toulouse",
+				ingredient: "Saucisse bretonne ou de Toulouse",
 				quantity: 2,
 			},
 			{
@@ -557,7 +557,7 @@ export const recipes = [
 		time: 60,
 		description:
 			"Mélangez dans un saladier, la farine, les oeufs, et le lait. Battez jusqu'à avoir une masse homogène. Pendant ce temps faites fondre le beurre et ajoutez en une partie à la pâte à crêpes. Faire fondre le chocolat ( avec le reste du beurre salé ). Lorsque vous chauffez les crêpes. Ajouter le chocolat fondu et les bananes coupées en rondelles. Ajoutez une touche de chantilly pour les gourmands",
-		appliance: "Poële à crêpe",
+		appliance: "Poêle à crêpe",
 		ustensils: ["saladier", "louche", "cuillère en bois"],
 	},
 	{
@@ -692,7 +692,7 @@ export const recipes = [
 	},
 	{
 		id: 20,
-		name: "Pates Carbonara",
+		name: "Pâtes Carbonara",
 		servings: 5,
 		ingredients: [
 			{
@@ -1753,7 +1753,7 @@ export const recipes = [
 				quantity: 6,
 			},
 			{
-				ingredient: "Poudre d'amendes",
+				ingredient: "Poudre d'amandes",
 				quantity: 500,
 				unit: "grammes",
 			},

@@ -20,8 +20,8 @@
 		<main>
 			<!-- Searchbar -->
 			<div class="searchbar">
-				<input type="text" class="form-control py-3" placeholder="Rechercher une recette">
-				<i class="fa-solid fa-magnifying-glass px-2 fs-3"></i>
+				<input id="searchbar" type="text" class="form-control py-3" placeholder="Rechercher une recette">
+				<button class="btn" type="button"><i class="fa-solid fa-magnifying-glass px-2 fs-3"></i></button>
 			</div>
 
 			<!-- Filter tags -->
@@ -30,7 +30,7 @@
 			<!-- Filters -->
 			<div class="py-3 d-flex flex-row">
 				<!-- Ingredients -->
-				<div class="filter__ingredients mx-2 my-0">
+				<div class="filter__ingredients mx-2 my-0 position-relative">
 					<div class="ingredients-controls d-flex">
 						<!-- Input pour la recherche d'ingrédients -->
 						<input type="text" id="input-ingredients" class="p-2 hidden" placeholder="Rechercher un ingrédient">
@@ -42,9 +42,6 @@
 					</div>
 					
 					<ul id="ingredients" class="filter__options px-3 hidden">
-						<li class="dropdown-item">Action</li>
-						<li class="dropdown-item">Another action</li>
-						<li class="dropdown-item">Something else here</li>
 					</ul>
 				</div>
 
@@ -61,9 +58,6 @@
 					</div>
 					
 					<ul id="appliances" class="filter__options px-3 hidden">
-						<li class="dropdown-item">Action</li>
-						<li class="dropdown-item">Another action</li>
-						<li class="dropdown-item">Something else here</li>
 					</ul>
 				</div>
 
@@ -80,9 +74,6 @@
 					</div>
 					
 					<ul id="ustensils" class="filter__options px-3 hidden">
-						<li class="dropdown-item">Action</li>
-						<li class="dropdown-item">Another action</li>
-						<li class="dropdown-item">Something else here</li>
 					</ul>
 				</div>
 			</div>
@@ -118,7 +109,8 @@
 	</body>
 
 	<script type="module" src="./data/recipes.js"></script>
-	<script  src="./scripts/recipesCard.js"></script>
+	<script src="./scripts/recipesCard.js"></script>
+	<script src="./scripts/filtersList.js"></script>
 	<script type="module" src="./scripts/index.js"></script>
 	
 </html>
