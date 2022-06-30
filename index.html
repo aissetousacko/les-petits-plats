@@ -33,11 +33,11 @@
 				<div class="filter__ingredients mx-2 my-0 position-relative">
 					<div class="ingredients-controls d-flex">
 						<!-- Input pour la recherche d'ingrédients -->
-						<input type="text" id="input-ingredients" class="p-2 hidden" placeholder="Rechercher un ingrédient">
+						<input type="text" id="input-ingredients" class="filters__input p-2 hidden" size="40" placeholder="Rechercher un ingrédient">
 						<!-- Bouton pour afficher l'input et la liste d'ingrédients -->
 						<button id="ingredients-button" class="btn-ingredients btn-custom p-3" type="button">
 							Ingrédients
-							<i class="fa-solid fa-angle-down px-2"></i>
+							<i class="fa-solid fa-angle-down px-2 arrow"></i>
 						</button>
 					</div>
 					
@@ -49,11 +49,11 @@
 				<div class="filter__appliances mx-2 my-0">
 					<div class="appliances-controls d-flex">
 						<!-- Input pour la recherche d'appareils -->
-						<input type="text" id="input-appliances" class="p-2 hidden" placeholder="Rechercher un appareil">
+						<input type="text" id="input-appliances" class="filters__input p-2 hidden" size="29" placeholder="Rechercher un appareil">
 						<!-- Bouton pour afficher l'input et la liste d'appareils -->
 						<button id="appliances-button" class="btn-appliances btn-custom p-3" type="button">
 							Appareils
-							<i class="fa-solid fa-angle-down px-2"></i>
+							<i class="fa-solid fa-angle-down px-2 arrow"></i>
 						</button>
 					</div>
 					
@@ -65,11 +65,11 @@
 				<div class="filter__ustensils mx-2 my-0">
 					<div class="ustensils-controls d-flex">
 						<!-- Input pour la recherche d'ustensiles -->
-						<input type="text" id="input-ustensils" class="p-2 hidden" placeholder="Rechercher un ustensile">
+						<input type="text" id="input-ustensils" class="filters__input p-2 hidden" size="33" placeholder="Rechercher un ustensile">
 						<!-- Bouton pour afficher l'input et la liste d'ustensiles -->
 						<button id="ustensils-button" class="btn-ustensils btn-custom p-3" type="button">
 							Ustensiles
-							<i class="fa-solid fa-angle-down px-2"></i>
+							<i class="fa-solid fa-angle-down px-2 arrow"></i>
 						</button>
 					</div>
 					
@@ -110,7 +110,7 @@
 
 	<script type="module" src="./data/recipes.js"></script>
 	<script src="./scripts/recipesCard.js"></script>
-	<script src="./scripts/filtersList.js"></script>
+	<script src="./scripts/tags.js"></script>
 	<script type="module" src="./scripts/index.js"></script>
 	
 </html>

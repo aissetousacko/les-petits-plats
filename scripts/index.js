@@ -9,12 +9,15 @@ const appliancesListbox = document.querySelector("#appliances");
 const ustensilsButton = document.querySelector("#ustensils-button");
 const ustensilsInput = document.querySelector("#input-ustensils");
 const ustensilsListbox = document.querySelector("#ustensils");
+const arrowIcon = document.querySelector(".arrow");
 const searchbar = document.querySelector("#searchbar");
+const tagsSection = document.querySelector(".filters__tags");
+const inputFilters = document.querySelectorAll(".filters__input");
 
 let ingredientsList = []
 let appliancesList = []
 let ustensilsList = []
-
+let selectedTagsList = []
 
 
 //? FILTRES
@@ -33,12 +36,14 @@ const toggleBox = (button, list, input) => {
       button.firstChild.textContent = ""
       list.classList.remove("hidden")
       input.classList.remove("hidden")
+      //arrowIcon.classList.replace("fa-angle-down", "fa-angle-up")
    }
 
    const closeBox = (button, list, input) => {
       //console.log("click close")
       list.classList.add("hidden")
       input.classList.add("hidden")
+      //arrowIcon.classList.replace("fa-angle-up", "fa-angle-down")
       switch(button) {
          case ingredientsButton:
             button.firstChild.textContent = "Ingrédients";
@@ -131,9 +136,9 @@ const getFilters = (data) => {
  * @param {array} array 
  * @returns 
  */
-const displayFilters = (array) => {
+const displayFilterItems = (array, item) => {
    const result =  array.map(element => {
-      return `<li class="dropdown-item">${element.charAt(0).toUpperCase() + element.slice(1)}</li>`
+      return `<li class="${item}-item px-2">${element.charAt(0).toUpperCase() + element.slice(1)}</li>`
    })
 
    return result.join("")  
@@ -153,15 +158,12 @@ const getRecipesFiltered = (recipes) => {
       let title = element.name;
       let description = element.description;
       let ingredients = element.ingredients
-      /* console.log(title)
-      console.log(description)
-      console.log(ingredients) */
 
       /**
        ** on regarde dans le titre, les ingrédients et la description si 
-       ** la valeur saisie est dans ces valeurs là
+       ** la valeur saisie correspond
        */
-      console.log(searchbar.value)
+      //console.log(searchbar.value)
       let resultTitle = title.toLowerCase().includes(searchbar.value.toLowerCase())
       let resultDescription = description.toLowerCase().includes(searchbar.value.toLowerCase())
       let resultIngredients = ingredients.map(el => {
@@ -185,10 +187,50 @@ const getRecipesFiltered = (recipes) => {
 
 
 /**
- ** Affiche toutes les recettes sur la page web
- * 
+ ** Fonction de recherche des input des filtres
+ * @param {array} data 
  */
-const displayRecipes = (data) => {
+const inputSearch = (data, inputIndex, listbox, item) => {
+   let result = data.filter(element => {
+      return element.toLowerCase().includes(inputFilters[inputIndex].value.toLowerCase())
+   })
+   //console.log(result)
+   listbox.innerHTML = displayFilterItems(result, item);
+}
+
+//Fonction qui prend en parametres l'array des ingredients... 
+//1-eventlistener sur chaque item
+const getRecipesFilteredByTags = (filterArray, recipes) => {
+   let filtersArrayDOM = Array.from(document.querySelectorAll(".ingredients-item"))
+   //console.log(filtersArrayDOM)
+   filtersArrayDOM.forEach(item => {
+      //console.log(item)
+      item.addEventListener("click", () => {
+         console.log(item.textContent)
+         let result = recipes.filter(element => {
+            //on récupère les ingrédients de la recette actuelle
+            let ingredients = filterArray
+            //on parcourt le tableau de touts les ingrédients et on regarde si l'ingrédient selectionné est
+            //dans le tableau 
+            //console.log(ingredients)
+            let resultIngredients = ingredients.map(el => {
+               //console.log(el)
+               return el.toLowerCase().includes(item.textContent.toLowerCase())
+            })
+            console.log(resultIngredients)
+            if(resultIngredients.includes(true)) return element
+         })
+         //displayRecipes(result)
+      })
+   })
+}
+
+
+/**
+ ** Affiche toutes les recettes sur la page
+ ** data est un array contenant les recettes à afficher
+ */
+ const displayRecipes = (data) => {
    const cardDiv = document.querySelector(".recipes__container")
    // La méthode map() renvoie un tableau et 
    //la méthode join() ne s'éxécute qu"avec un tableau
@@ -211,7 +253,7 @@ const displayRecipes = (data) => {
 async function init() {
 
    //Event toggle pour affichage des listes
-   // * prend en paramètres button, list, input
+   //* prend en paramètres button, list, input
    ingredientsButton.onclick = () => toggleBox(ingredientsButton, ingredientsListbox, ingredientsInput)
    appliancesButton.onclick = () => toggleBox(appliancesButton, appliancesListbox, appliancesInput)
    ustensilsButton.onclick = () => toggleBox(ustensilsButton, ustensilsListbox, ustensilsInput)
@@ -239,16 +281,25 @@ async function init() {
          displayRecipes(recipes)
       }
    })
-   //getRecipesFiltered(recipes)
 
    //TODO : affiche la liste des filtres
    const { ingredients, appliances, ustensils } = getFilters(recipes)
    //console.log(ingredients)
-   ingredientsListbox.innerHTML = displayFilters(ingredients)
-   appliancesListbox.innerHTML = displayFilters(appliances)
-   ustensilsListbox.innerHTML = displayFilters(ustensils)
+   ingredientsListbox.innerHTML = displayFilterItems(ingredients, "ingredients")
+   appliancesListbox.innerHTML = displayFilterItems(appliances, "appliances")
+   ustensilsListbox.innerHTML = displayFilterItems(ustensils, "ustensils")
    
-	
+   //TODO: pour chaque input des filtres, affiche les recettes filtrées
+	inputFilters.forEach(input => {
+      input.addEventListener("input", (e) => {
+         e.preventDefault()
+         inputSearch(ingredients, 0, ingredientsListbox, "ingredients");
+         inputSearch(appliances, 1, appliancesListbox, "appliances");
+         inputSearch(ustensils, 2, ustensilsListbox, "ustensils");
+      })
+   })
+
+   getRecipesFilteredByTags(ingredients, recipes)
 }
 
 init();
