@@ -25,16 +25,14 @@
 			</div>
 
 			<!-- Filter tags -->
-			<div class="filters__tags"></div>
+			<div class="filters__tags py-2"></div>
 
 			<!-- Filters -->
 			<div class="py-3 d-flex flex-row">
 				<!-- Ingredients -->
 				<div class="filter__ingredients mx-2 my-0 position-relative">
 					<div class="ingredients-controls d-flex">
-						<!-- Input pour la recherche d'ingrédients -->
-						<input type="text" id="input-ingredients" class="filters__input p-2 hidden" size="40" placeholder="Rechercher un ingrédient">
-						<!-- Bouton pour afficher l'input et la liste d'ingrédients -->
+						<input type="text" id="input-ingredients" class="filters__input p-2 hidden" placeholder="Rechercher un ingrédient">
 						<button id="ingredients-button" class="btn-ingredients btn-custom p-3" type="button">
 							Ingrédients
 							<i class="fa-solid fa-angle-down px-2 arrow"></i>
@@ -48,9 +46,7 @@
 				<!-- Apliances -->
 				<div class="filter__appliances mx-2 my-0">
 					<div class="appliances-controls d-flex">
-						<!-- Input pour la recherche d'appareils -->
-						<input type="text" id="input-appliances" class="filters__input p-2 hidden" size="29" placeholder="Rechercher un appareil">
-						<!-- Bouton pour afficher l'input et la liste d'appareils -->
+						<input type="text" id="input-appliances" class="filters__input p-2 hidden" placeholder="Rechercher un appareil">
 						<button id="appliances-button" class="btn-appliances btn-custom p-3" type="button">
 							Appareils
 							<i class="fa-solid fa-angle-down px-2 arrow"></i>
@@ -64,9 +60,7 @@
 				<!-- Ustensils -->
 				<div class="filter__ustensils mx-2 my-0">
 					<div class="ustensils-controls d-flex">
-						<!-- Input pour la recherche d'ustensiles -->
-						<input type="text" id="input-ustensils" class="filters__input p-2 hidden" size="33" placeholder="Rechercher un ustensile">
-						<!-- Bouton pour afficher l'input et la liste d'ustensiles -->
+						<input type="text" id="input-ustensils" class="filters__input p-2 hidden" placeholder="Rechercher un ustensile">
 						<button id="ustensils-button" class="btn-ustensils btn-custom p-3" type="button">
 							Ustensiles
 							<i class="fa-solid fa-angle-down px-2 arrow"></i>
@@ -79,38 +73,13 @@
 			</div>
 
 			<!-- Recipes cards -->
-			<div class="recipes__container row row-cols-3">
-				<!-- <div class="col">
-					<div class="recipe__card card m-0">
-						<img src="./assets/images/image.png" class="card-img-top" alt="...">
-						<div class="card-body m-0">
-							<div class="d-flex justify-content-between">
-								<h5 class="card-title m-0">Limonade de Coco</h5>
-								  <p class="fw-bold"><i class="fa-regular fa-clock"></i> 10 min</p>
-							</div>
-							<div class="card-text row">
-								<ul class="recipe__ingredients col">
-									<li><span class="fw-bold">Jus de citron : </span>400ml</li>
-									<li><span class="fw-bold">Jus de citron : </span>400ml</li>
-									<li><span class="fw-bold">Jus de citron : </span>400ml</li>
-									<li><span class="fw-bold">Jus de citron : </span>400ml</li>
-									<li><span class="fw-bold">Jus de citron : </span>400ml</li>
-								</ul>
-								<div class="recipe_description col">
-									"Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée"
-								</div>
-							</div>
-						</div>
-					</div>
-				</div> -->
-			</div>
+			<div class="recipes__container row row-cols-3"></div>
 		</main>
 		
 	</body>
 
 	<script type="module" src="./data/recipes.js"></script>
 	<script src="./scripts/recipesCard.js"></script>
-	<script src="./scripts/tags.js"></script>
 	<script type="module" src="./scripts/index.js"></script>
 	
 </html>

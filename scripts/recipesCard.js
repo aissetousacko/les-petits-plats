@@ -7,22 +7,16 @@ class RecipeCard {
    }
 
    getIngredients() {
-      //console.log(this.ingredients)
       const result = this.ingredients.map(element => {
          const { ingredient, quantity, unit } = element;
-         //console.log(element)
          if(quantity && unit) {
-            //console.log("quantity+unit")
             return `<li><span class="fw-bold">${ingredient}: </span>${quantity} ${unit}</li>`
          } else if (quantity && !unit) {
-            //console.log("quantity")
             return `<li><span class="fw-bold">${ingredient}: </span>${quantity}</li>`
          } else {
-            //console.log("ingredient")
             return `<li><span class="fw-bold">${ingredient}</span></li>`
          }
       }).join("")
-      //console.log(result)
       return result
    }
 
