@@ -127,23 +127,19 @@ const getFilters = (data) => {
  ** Takes an array in parameters and get recipes whitch match with the input value
  */
 const getRecipesFiltered = (recipes) => {
-   const result = recipes.filter(element => {
-      let title = element.name;
-      let description = element.description;
-      let ingredients = element.ingredients
+	const result = recipes.filter(element => {
 
-      let resultTitle = title.toLowerCase().includes(searchbar.value.toLowerCase())
-      let resultDescription = description.toLowerCase().includes(searchbar.value.toLowerCase())
-      let resultIngredients = ingredients.map(el => {
-         el.ingredient.toLowerCase().includes(searchbar.value.toLowerCase())
-      })
-      if(resultIngredients.includes(true)) return element
+      let resultTitle = element.name.toLowerCase().includes(searchbarValue.toLowerCase())
+      let resultDescription = element.description.toLowerCase().includes(searchbarValue.toLowerCase())
+      let resultIngredients = element.ingredients.find(elt => {
+         elt.ingredient.toLowerCase().includes(searchbarValue.toLowerCase())
+      });
 
-      return resultTitle, resultDescription
-   })
+      return resultTitle || resultDescription || resultIngredients;
+   });
 
    return result;
-}
+};
 
 /**
  ** Display the ingredients, appareils and ustensils items in the listbox
@@ -208,14 +204,23 @@ const createTag = (text, type) => {
    if(type === "ingredients") {
       ingredientsSelected.push(text.toLowerCase())
       tagsSection.innerHTML += `<span class="${type}-tag px-2 py-1 mx-2" data-type="${type}">${text}<i class="fa-regular fa-circle-xmark close-tag ps-2"></i></span>`;
+      ingredientsList = removeItemFromList(ingredientsList, text.toLowerCase())
+      ingredientsListbox.innerHTML = displayFilterItems(ingredientsList, "ingredients")
+      //console.log("ingredientsList", ingredientsList)
       displayHandler()
    } else if(type === "appliances") {
       appliancesSelected.push(text.toLowerCase())
       tagsSection.innerHTML += `<span class="${type}-tag px-2 py-1 mx-2" data-type="${type}">${text}<i class="fa-regular fa-circle-xmark close-tag ps-2"></i></span>`;
+      appliancesList = removeItemFromList(appliancesList, text.toLowerCase())
+      appliancesListbox.innerHTML = displayFilterItems(appliancesList, "appliances")
+      //console.log("appliancesList", appliancesList)
       displayHandler()
    } else if(type === "ustensils") {
       ustensilsSelected.push(text.toLowerCase())
       tagsSection.innerHTML += `<span class="${type}-tag px-2 py-1 mx-2" data-type="${type}">${text}<i class="fa-regular fa-circle-xmark close-tag ps-2"></i></span>`;
+      ustensilsList = removeItemFromList(ustensilsList, text.toLowerCase())
+      ustensilsListbox.innerHTML = displayFilterItems(ustensilsList, "appliances")
+      //console.log("ustensilsList", ustensilsList)
       displayHandler()
    }
 
@@ -233,7 +238,7 @@ const createTag = (text, type) => {
  ** Close a tag
  */
 const closeTag = (e) => {
-   console.log("close tag")
+   //console.log("close tag")
    let tag = e.target
    tag.parentNode.remove(tag)
 
@@ -243,19 +248,19 @@ const closeTag = (e) => {
    switch(tagType) {
       case "ingredients":
          ingredientsSelected = removeItemFromList(ingredientsSelected, tagName)
-         console.log("new ingredients selected", ingredientsSelected)
+         //console.log("new ingredients selected", ingredientsSelected)
          displayHandler()
          break;
 
       case "appliances":
          appliancesSelected = removeItemFromList(appliancesSelected, tagName)
-         console.log("new appliances selected", appliancesSelected)
+         //console.log("new appliances selected", appliancesSelected)
          displayHandler()
          break;
 
       case "ustensils":
          ustensilsSelected = removeItemFromList(ustensilsSelected, tagName)
-         console.log("new ustensils selected", ustensilsSelected)
+         //console.log("new ustensils selected", ustensilsSelected)
          displayHandler()
          break;
 
@@ -372,6 +377,7 @@ const displayHandler = () => {
    }
 
    recipesFiltered = allRecipes
+
    if(searchbarValue.length >= 3) {
       recipesFiltered = getRecipesFiltered(allRecipes)
    }
@@ -401,15 +407,13 @@ const displayHandler = () => {
       recipesFiltered = recipesFiltered.filter(recipe => {
          return recipe.ustensils.some(ustensil => ustensil.toLowerCase() === tag);
       })
-
-      console.log("recipesFiltered with ustensils", recipesFiltered)
    })
 
-   const { ingredients, appliances, ustensils } = getFilters(recipesFiltered)
    displayRecipes(recipesFiltered)
-   getRecipesFilteredByIngredients(ingredients)
-   getRecipesFilteredByAppliances(appliances)
-   getRecipesFilteredByUstensils(ustensils)
+   //console.log("ingredientsList", ingredientsList)
+   getRecipesFilteredByIngredients(ingredientsList)
+   getRecipesFilteredByAppliances(appliancesList)
+   getRecipesFilteredByUstensils(ustensilsList)
 }
 
 
