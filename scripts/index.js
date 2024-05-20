@@ -283,23 +283,6 @@ const removeItemFromList = (list, item) => {
 }
 
 /**
- ** Displat the recipes in the DOM
- */
- const displayRecipes = (data) => {
-   const cardDiv = document.querySelector(".recipes__container")
-   const cards = data.map(element => {
-      let recipeDom = new RecipeCard(element).recipeDOM()
-      return recipeDom
-   })
-
-   cardDiv.innerHTML = cards.join("")
-
-   if(data.length == 0) {
-      cardDiv.innerHTML = "<p>Aucune recette ne correspond à votre critère…<br> Vous pouvez chercher « tarte aux pommes », « poisson », etc.</p>"
-   }
-}
-
-/**
  ** Search in the input filters
  */
  const inputSearch = (data, input) => {
@@ -335,6 +318,9 @@ const initSearchBar = () => {
    })
 }
 
+/**
+ * Filter the ingredients list
+ */
 const filterIngredients = (inputValue) => {
    if(inputValue.length > 0) {
       let ingredientsFiltered = inputSearch(ingredientsList, ingredientsInput)
@@ -344,6 +330,9 @@ const filterIngredients = (inputValue) => {
    }
 }
 
+/**
+ * Filter the appliances list
+ */
 const filterAppliances = (inputValue) => {
    if(inputValue.length > 0) {
       let appliancesFiltered = inputSearch(appliancesList, appliancesInput)
@@ -353,6 +342,9 @@ const filterAppliances = (inputValue) => {
    }
 }
 
+/**
+ * Filter the ustensils list
+ */
 const filterUstensils = (inputValue) => {
    if(inputValue.length > 0) {
       let ustensilsFiltered = inputSearch(ustensilsList, ustensilsInput)
@@ -416,6 +408,22 @@ const displayHandler = () => {
    getRecipesFilteredByUstensils(ustensilsList)
 }
 
+/**
+ ** Display the recipes in the DOM
+ */
+ const displayRecipes = (data) => {
+   const cardDiv = document.querySelector(".recipes__container")
+   const cards = data.map(element => {
+      let recipeDom = new RecipeCard(element).recipeDOM()
+      return recipeDom
+   })
+
+   cardDiv.innerHTML = cards.join("")
+
+   if(data.length == 0) {
+      cardDiv.innerHTML = "<p>Aucune recette ne correspond à votre critère…<br> Vous pouvez chercher « tarte aux pommes », « poisson », etc.</p>"
+   }
+}
 
 function init() {
    allRecipes = recipes
