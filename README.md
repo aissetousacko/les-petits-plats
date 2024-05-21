@@ -3,7 +3,7 @@
 </p>
 
 
-## General infos
+## Presentation
 Les petits plats is site with an algorithme to search for recipes. There are filters for a more detailed search.  <br/>
 [View the project](https://aissetousacko.github.io/les-petits-plats/)
 
@@ -16,5 +16,5 @@ This project is created with :
 * Javascript
 
 
-## Sources
-This project is a study project carried out with Openclassrooms
+## Author
+Aïssetou SACKO - This project is a study project carried out with Openclassrooms
